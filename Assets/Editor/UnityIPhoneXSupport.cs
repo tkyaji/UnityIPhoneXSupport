@@ -18,9 +18,6 @@ public class UnityIPhoneXSupport {
 
     [PostProcessBuild]
     public static void OnPostProcessBuild(BuildTarget buildTarget, string path) {
-        return;
-
-
         if (UnityEditor.PlayerSettings.statusBarHidden) {
             var plistPath = Path.Combine(path, "Info.plist");
             var plist = new PlistDocument();
