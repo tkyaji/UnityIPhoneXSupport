@@ -12,20 +12,20 @@ You can set an image or a single color in the margin.
 
 ## Usage
 
-Import to `UnityIPhoneXSupport.unitypackage`
+Import to `UnityIPhoneXSupport_Portrait.unitypackage` or `UnityIPhoneXSupport_Landscape.unitypackage`
 
 
 ## Settings
 
 On the variables in `UnityIPhoneXSupport.cs`, you can make the following settings.
 
-### headerSize, footerSize
+### headerSize, footerSize / leftSize, rightSize
 Sets the size of the margin.
 
-### headerColor, footerColor
+### headerColor, footerColor / leftColor, rightColor
 Set the color of the margin.
 
-### headerImage, footerImage
+### headerImage, footerImage / leftImage, rightImage
 Set the image to display in the margin.
 If you do not want to display the image, leave it empty.
 Images must be under "StreamingAssets" Directory.
