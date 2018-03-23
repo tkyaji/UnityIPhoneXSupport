@@ -32,7 +32,7 @@ public class UnityIPhoneXSupport {
             string viewControllerContent = File.ReadAllText(viewControllerPath);
             string vcOldText = "    return _PrefersStatusBarHidden;";
             string vcNewText = "    CGSize size = [UIScreen mainScreen].bounds.size;\n" +
-                               "    if (fmax(size.height, size.width) / fmin(size.height, size.width) > 2.15f) {\n" +
+                               "    if (size.height / size.width > 2.15f) {\n" +
                                "        return NO;\n" +
                                "    } else {\n" +
                                "        return YES;\n" +
@@ -45,7 +45,7 @@ public class UnityIPhoneXSupport {
         string appControllerContent = File.ReadAllText(appControllerPath);
         string acOldText = "    _window         = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];";
         string acNewText = "    CGRect rect = [UIScreen mainScreen].bounds;\n" +
-                           "    if (fmax(rect.size.height, rect.size.width) / fmin(rect.size.height, rect.size.width) > 2.15f) {{\n" +
+                           "    if (rect.size.height / rect.size.width > 2.15f) {{\n" +
                            "        rect.origin.y = {0:0.0#####}f;\n" +
                            "        rect.size.height -= ({0:0.0#####}f + {1:0.0#####}f);\n" +
                            "        _window = [[UIWindow alloc] initWithFrame: rect];\n" +
@@ -70,7 +70,6 @@ public class UnityIPhoneXSupport {
                      "    }} else {{\n" +
                      "        _window = [[UIWindow alloc] initWithFrame: rect];\n" +
                      "    }}\n";
-        Debug.Log(acNewText);
         acNewText = string.Format(acNewText, headerSize, footerSize,
             headerColor.r, headerColor.g, headerColor.b, headerColor.a,
             footerColor.r, footerColor.g, footerColor.b, footerColor.a);
@@ -81,7 +80,7 @@ public class UnityIPhoneXSupport {
         string viewContent = File.ReadAllText(viewPath);
         string vOldText = "    CGRect  frame   = [UIScreen mainScreen].bounds;";
         string vNewText = "    CGRect frame = [UIScreen mainScreen].bounds;\n" +
-                          "    if (fmax(frame.size.height, frame.size.width) / fmin(frame.size.height, frame.size.width) > 2.15f) {{\n" +
+                          "    if (frame.size.height / frame.size.width > 2.15f) {{\n" +
                           "        frame.size.height -= {0:0.0#####}f;\n" +
                           "    }}";
         vNewText = string.Format(vNewText, headerSize + footerSize);
